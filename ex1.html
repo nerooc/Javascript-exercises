@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Powiększ</title>
+ <style>
+  button {
+   padding: 10px;
+   font-size: 50px;
+   font-family: sans-serif;
+   background-color: transparent;
+   border: 2px solid black;
+  }
+
+  .square {
+   width: 100px;
+   height: 100px;
+   background-color: #000;
+   position: fixed;
+   top: calc(50% - 50px);
+   left: calc(50% - 50px);
+   /* transform: rotate(30deg); */
+   /* transition: .5s; */
+  }
+
+  /* .animation {
+   transition: .5s;
+   background-color: red;
+  } */
+ </style>
+</head>
+
+<body>
+ <button>Obróc</button>
+ <div class="square"></div>
+
+ <script>
+  // parametry główne. Za pomocą zmiennych stwórz początkową wartość rotate (zero) i wartość o którą będziesz zmieniał stopnie (o 10 stopnii).
+  let rotate = 0;
+  const deg = 10;
+
+  // pobieramy elementy - pobierz przycisk i div
+  const div = document.querySelector('div');
+  const btn = document.querySelector('button');
+  div.style.transitionDuration = "0.5s";
+
+
+  // podpinamy nasłuchiwanie i umeiszczamy w nim funkcje anonimową. Pamiętaj zmieniamy własciwość transform. Za każdym razie obrót zwiększa się od 10 deg. 
+  btn.addEventListener("click", function () {
+   // div.style.transform = "rotate(0deg)";
+   // rotate = rotate + deg;
+   rotate += deg;
+   div.style.transform = "rotate(" + rotate + "deg)";
+   //"rotate(0deg)"
+   // div.classList.add("animation");
+  })
+
+  //Bonus dodaj właściwość transition dla div określoną na .5s.
+ </script>
+</body>
+
+</html>
