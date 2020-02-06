@@ -28,18 +28,28 @@
             var tips = [];
             for (var i = 0; i < 3; i++) {
                 if (bills[i] < 50) {
-                    tips[i] = (0.2 * bills[i]).toPrecision(3);
-                } else if ((bills[i] > 50) && (bills[i] < 200)) {
-                    tips[i] = (0.15 * bills[i]).toPrecision(3);
+                    tips[i] = (0.2 * bills[i]);
+                } else if ((bills[i] >= 50) && (bills[i] < 200)) {
+                    tips[i] = (0.15 * bills[i]);
                 } else {
-                    tips[i] = (0.1 * bills[i]).toPrecision(3);
+                    tips[i] = (0.1 * bills[i]);
                 }
             }
 
             return tips;
         }
 
-        console.log(calculateTip(restaurantBills));
+
+        var restaurantTips = calculateTip(restaurantBills);
+
+        console.log(restaurantTips);
+
+        var finalValues = new Array;
+
+        for (var i = 0; i < 3; i++) {
+            finalValues[i] = restaurantBills[i] + restaurantTips[i];
+        }
+        console.log(finalValues);
     </script>
 </head>
 
