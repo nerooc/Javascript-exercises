@@ -1,18 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<script>
+			/*****************************
+			 * CODING CHALLENGE 4
+			 */
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script>
+			/*
+			         Let's remember the first coding challenge where Mark and John compared their BMIs. Let's now implement the same functionality with objects and methods.
+			         1. For each of them, create an object with properties for their full name, mass, and height
+			         2. Then, add a method to each object to calculate the BMI. Save the BMI to the object and also return it from the method.
+			         3. In the end, log to the console who has the highest BMI, together with the full name and the respective BMI. Don't forget they might have the same BMI.
+			         Remember: BMI = mass / height^2 = mass / (height * height). (mass in kg and height in meter).
+			         GOOD LUCK 😀
+			         */
 
-    </script>
-</head>
+			var Mark = {
+				fullName: 'Mark Smith',
+				mass: 80,
+				height: 198,
+				calcBMI: function() {
+					this.bmi = this.mass / (this.height * this.height);
+					return this.bmi;
+				},
+			};
 
-<body>
+			var John = {
+				fullName: 'John Smith',
+				mass: 75,
+				height: 198,
+				calcBMI: function(mass, height) {
+					this.bmi = this.mass / (this.height * this.height);
+					return this.bmi;
+				},
+			};
 
-</body>
+			if (John.calcBMI() > Mark.calcBMI()) {
+				console.log(John.fullName + ' has the highest BMI of ' + John.bmi);
+			} else if (John.bmi < Mark.bmi) {
+				console.log(Mark.fullName + ' has the highest BMI of ' + Mark.bmi);
+			} else {
+				console.log('They have the same BMI');
+			}
+		</script>
+	</head>
 
+	<body></body>
 </html>
