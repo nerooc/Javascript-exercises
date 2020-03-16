@@ -8,29 +8,40 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, prevRoll;
 
 gameInit();
 
-document.querySelector('.btn-roll').addEventListener('click', function() {
+document.querySelector('.btn-roll').addEventListener('click', function () {
 	if (gamePlaying) {
 		var dice = Math.floor(Math.random() * 6) + 1;
 		var diceDOM = document.querySelector('.dice');
 		diceDOM.style.display = 'block';
 		diceDOM.src = 'dice-' + dice + '.png';
 
-		if (dice !== 1) {
+		if (dice === prevRoll && dice === 6) {
+			scores[activePlayer] = 0;
+			alert('YOU ROLLED 6 TWICE'); //added to see when it happens 
+			nextPlayer();
+			prevRoll = 0;
+
+		} else if (dice !== 1) {
 			roundScore += dice;
 			document.querySelector(
 				'#current-' + activePlayer
 			).textContent = roundScore;
+			prevRoll = dice;
+
 		} else {
+			prevRoll = 0;
 			nextPlayer();
 		}
+
+
 	}
 });
 
-document.querySelector('.btn-hold').addEventListener('click', function() {
+document.querySelector('.btn-hold').addEventListener('click', function () {
 	if (gamePlaying) {
 		scores[activePlayer] += roundScore;
 		document.querySelector('#score-' + activePlayer).textContent =
@@ -57,7 +68,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 	}
 });
 
-document.querySelector('.btn-new').addEventListener('click', function() {
+document.querySelector('.btn-new').addEventListener('click', function () {
 	gameInit();
 });
 
@@ -93,6 +104,7 @@ function gameInit() {
 }
 
 function clear() {
+	prevRoll = 0;
 	activePlayer = 0;
 	roundScore = 0;
 	scores = [0, 0];
