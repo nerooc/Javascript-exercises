@@ -19,18 +19,27 @@
 			GOOD LUCK 😀
 			*/
 
-			var heightJohn = 1.8; //meters
-			var heightMark = 1.7;
+			function calculateBMI(height, mass){
+				return mass / (height * height);
+			}
 
-			var massMark = 80; //kilograms
-			var massJohn = 100;
+			var Mark = {
+				mass: 80,
+				height: 2,
+				BMI: 0
+			}
 
-			var bmiJohn = massJohn / (heightJohn * heightJohn);
-			var bmiMark = massMark / (heightMark * heightMark);
-			console.log(bmiJohn, bmiMark);
+			var John = {
+				mass: 90,
+				height: 1.8,
+				BMI: 0
+			}
+			
+			Mark.BMI = calculateBMI(Mark.height, Mark.mass);
+			John.BMI = calculateBMI(John.height, John.mass);
 
-			var isMarkBMIhigher = bmiMark > bmiMark;
-			console.log(isMarkBMIhigher);
+			console.log('Mark: ' + Mark.BMI + ' John: ' + John.BMI);
+
 		</script>
 	</head>
 
